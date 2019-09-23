@@ -1,4 +1,5 @@
 
+
   ## start
 
     docker run --name mongo-srv -v /opt/development/docker/data/mongodb/:/data/db -p 27017:27017 -d mongo
@@ -79,7 +80,7 @@
 	...)
 	WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 
-##delete
+### delete
 
 	> db.tours.remove({"tourName":"The Wines of Santa Cruz"})
 	WriteResult({ "nRemoved" : 1 })
@@ -271,5 +272,55 @@
 	...)
 
 	db.tours.createIndex({ "tourPrice" : 1 , tourLength: 1 })
+
+
+### unique
+
+
+### text
+
+	> db.tours.createIndex( { tourDescription:"text",   tourBlurb:"text" })
+	{
+		"createdCollectionAutomatically" : false,
+		"numIndexesBefore" : 1,
+		"numIndexesAfter" : 2,
+		"ok" : 1
+	}
+
+	db.tours.find(
+	... {$text : {$search:"wine"}}, 
+	... {score:{$meta:"textScore"}
+	... }).pretty(
+
+  
+## Query
+
+	> db.tours.find({ 
+	..."tourPrice" : {$lte:500} , 
+	..."tourLength": {$lte:3} 
+	..}, {
+	  "_id":0,"tourName":1,
+    ... "tourPrice":2})
+    ... .pretty()
+    ... .sort({"tourPrice":1})
+
+	> db.tours.find({$text : {$search:"wine"}}, {score:{$meta:"textScore"}}).sort({score:{$meta:"textScore"}}).pretty()
+		
+	> db.tours.find({ tourDescription : 
+
+    {$regex:/valley/i}} , {"_id":0,tourName:1})
+    { "tourName" : "The Death Valley Survivor's Trek" }
+    { "tourName" : "Day Spa Package" }
+    { "tourName" : "Restoration Package" }
+    { "tourName" : "Ski Lake Tahoe" }
+    
+    > db.tours.find({ tourDescription : /valley/i} , {"_id":0,tourName:1})
+    { "tourName" : "The Death Valley Survivor's Trek" }
+    { "tourName" : "Day Spa Package" }
+    { "tourName" : "Restoration Package" }
+    { "tourName" : "Ski Lake Tahoe" }
+
+
+    
 
 
