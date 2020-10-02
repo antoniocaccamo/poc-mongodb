@@ -7,9 +7,9 @@ micronaut:
 #
   params:
     mongodb:
-      host    : ${MONGODB_HOST:cluster0.5ijmj.mongodb.net}
-      username: ${MONGODB_USERNAME:learn_mongodb}
-      password: ${MONGODB_PASSWORD:learn_mongodb}
+      host    : ${MONGODB_HOST:xxx}
+      username: ${MONGODB_USERNAME:xxx}
+      password: ${MONGODB_PASSWORD:xxx}
       dbname  : ${MONGODB_DBNAME:learning_mongodb}
       collection : ${MONGODB_COLLECTION:tours}
 #
