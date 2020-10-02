@@ -1,0 +1,17 @@
+#
+#
+#
+micronaut:
+  application:
+    name: pocMongodb
+#
+  params:
+    mongodb:
+      host    : ${MONGODB_HOST:cluster0.5ijmj.mongodb.net}
+      username: ${MONGODB_USERNAME:learn_mongodb}
+      password: ${MONGODB_PASSWORD:learn_mongodb}
+      dbname  : ${MONGODB_DBNAME:learning_mongodb}
+      collection : ${MONGODB_COLLECTION:tours}
+#
+mongodb:
+  uri: "mongodb+srv://${micronaut.params.mongodb.username}:${micronaut.params.mongodb.password}@${micronaut.params.mongodb.host}/${micronaut.params.mongodb.dbname}?retryWrites=true&w=majority&ssl=true&sslInvalidHostNameAllowed=true"
