@@ -131,10 +131,29 @@
 
     <plugins>
 
-      <plugin>
+      <!-- <plugin>
         <groupId>io.micronaut.build</groupId>
         <artifactId>micronaut-maven-plugin</artifactId>
-      </plugin>
+      </plugin> -->
+
+      <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>-noverify</argument>
+<!--                        <argument>-XstartOnFirstThread</argument>-->
+                        <argument>-XX:TieredStopAtLevel=1</argument>
+                        <argument>-Dcom.sun.management.jmxremote</argument>
+                        <argument>${exec.mainClass}</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

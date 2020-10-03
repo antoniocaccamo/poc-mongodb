@@ -36,6 +36,8 @@ public class TourCollection implements ICollection<Tour>{
         log.info("mongodbname       : {}", mongodbname);
         log.info("mongodbCollection : {}", mongodbCollection);
         collection = mongoClient.getDatabase(mongodbname).getCollection(mongodbCollection, Tour.class);
+
+        
     }
 
 

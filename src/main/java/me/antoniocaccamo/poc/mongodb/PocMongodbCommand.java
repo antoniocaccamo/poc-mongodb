@@ -35,7 +35,7 @@ public class PocMongodbCommand implements Runnable {
             System.out.println("Hi!");
         }
 
-        Flowable.fromPublisher(tourCollection.getCollection().find().first())
+        Flowable.fromPublisher(tourCollection.getCollection().find())
                 .subscribe(
                         document -> log.info("\tdocument : {}", document),
                         t -> log.error("{}", t),

@@ -1,0 +1,42 @@
+#args:
+#  - gitcommithash : 0cee220
+# ---
+version: "3"
+
+services:
+
+  mongodb:
+    image:  bitnami/mongodb
+    container_name: mongo
+    ports:
+          - "27017:27017"
+    restart: always
+    environment:
+      - MONGODB_DATABASE=${MONGODB_DATABASE}
+      - MONGODB_USERNAME=${MONGODB_USERNAME}
+      - MONGODB_PASSWORD=${MONGODB_PASSWORD}
+    networks:
+      - service_net
+    volumes:
+      - /opt/development/containers/mongodb:/bitnami/mongodb
+      
+  mongo-express:
+    image : mongo-express
+    container_name : mongo-express
+    ports:
+        - "8081:8081"
+    environment:
+        - ME_CONFIG_MONGODB_SERVER=mongodb
+        - ME_CONFIG_MONGODB_PORT=27017
+        - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
+        - ME_CONFIG_MONGODB_AUTH_DATABASE=${MONGODB_DATABASE}
+        - ME_CONFIG_MONGODB_AUTH_USERNAME=${MONGODB_USERNAME}
+        - ME_CONFIG_MONGODB_AUTH_PASSWORD=${MONGODB_PASSWORD}
+    depends_on:
+      - mongodb
+    networks:
+      - service_net
+
+networks: 
+   service_net:
+
