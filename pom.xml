@@ -71,7 +71,15 @@
       <artifactId>micronaut-runtime</artifactId>
       <scope>compile</scope>
     </dependency>
+<!--
+           <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-http-server-netty</artifactId>
+            <scope>compile</scope>
+        </dependency>
+-->
 
+    
     <dependency>
       <groupId>info.picocli</groupId>
       <artifactId>picocli</artifactId>
@@ -82,7 +90,7 @@
       <groupId>io.micronaut.picocli</groupId>
       <artifactId>micronaut-picocli</artifactId>
       <scope>compile</scope>
-    </dependency>
+    </dependency> 
 
     <dependency>
       <groupId>io.micronaut.mongodb</groupId>

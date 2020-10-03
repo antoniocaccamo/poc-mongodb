@@ -14,5 +14,5 @@ micronaut:
       collection : ${MONGODB_COLLECTION:tours}
 #
 mongodb:
-#  uri: "mongodb://${micronaut.params.mongodb.username}:${micronaut.params.mongodb.password}@${micronaut.params.mongodb.host}/${micronaut.params.mongodb.dbname}?retryWrites=true&w=majority&ssl=true&sslInvalidHostNameAllowed=true"
-   uri: "mongodb://localhost:27017"
+  uri: "mongodb://${micronaut.params.mongodb.username}:${micronaut.params.mongodb.password}@${micronaut.params.mongodb.host}/${micronaut.params.mongodb.dbname}?retryWrites=true&w=majority&ssl=true&sslInvalidHostNameAllowed=true"
+#   uri: "mongodb://localhost:27017"
