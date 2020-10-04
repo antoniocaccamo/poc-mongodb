@@ -1,6 +1,6 @@
 package me.antoniocaccamo.poc.mongodb.collection;
 
-import com.mongodb.reactivestreams.client.MongoCollection;
+import com.mongodb.client.MongoCollection;
 
 /**
  * @author ConsCaccamoAntonio  on 02/10/2020

@@ -1,16 +1,18 @@
 package me.antoniocaccamo.poc.mongodb;
 
-import com.mongodb.reactivestreams.client.MongoClient;
 import io.micronaut.configuration.picocli.PicocliRunner;
-
-import io.micronaut.context.annotation.Value;
-import io.reactivex.Flowable;
+import io.reactivex.functions.Action;
 import lombok.extern.slf4j.Slf4j;
 import me.antoniocaccamo.poc.mongodb.collection.TourCollection;
+import me.antoniocaccamo.poc.mongodb.model.Tour;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
 import javax.inject.Inject;
+
+import com.mongodb.client.FindIterable;
+
+import java.util.function.Consumer;
 
 @Command(name = "poc-mongodb", description = "...",
         mixinStandardHelpOptions = true)
@@ -35,14 +37,9 @@ public class PocMongodbCommand implements Runnable {
             System.out.println("Hi!");
         }
 
-        Flowable.fromPublisher(tourCollection.getCollection().find())
-                .subscribe(
-                        document -> log.info("\tdocument : {}", document),
-                        t -> log.error("{}", t),
-                        () -> log.info("done !")
+        FindIterable<Tour> findIterable = tourCollection.getCollection().find();
+        findIterable.forEach((Consumer<? super Tour>) tour -> log.info("\ttour : {}", tour));
 
-                )
-        ;
     }
 
 

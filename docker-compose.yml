@@ -34,6 +34,8 @@ services:
         - ME_CONFIG_MONGODB_AUTH_PASSWORD=${MONGODB_PASSWORD}
     depends_on:
       - mongodb
+    links:
+        - "mongodb"
     networks:
       - service_net
 

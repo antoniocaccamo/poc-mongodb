@@ -2,7 +2,10 @@ package me.antoniocaccamo.poc.mongodb.model;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
+
+import org.bson.types.ObjectId;
+
 
 /**
  * @author antonio  on 02/10/2020
@@ -11,14 +14,15 @@ import java.math.BigDecimal;
 @Data
 public class Tour {
 
+    private ObjectId _id;
     private String tourPackage;
     private String tourBlurb;
     private String tourName;
     private Integer tourLength;
-    private String tourTags;
+    private ArrayList<String> tourTags;
     private String tourDescription;
     private String tourRegion;
-    private BigDecimal tourPrice;
+    private Integer tourPrice;
     private String tourDifficulty;
     private String tourBullets;
 
